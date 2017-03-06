@@ -1,0 +1,22 @@
+name: json2dart
+version: 1.0.0
+description: Generate Dart classes from JSON.
+author: Tobe O <thosakwe@gmail.com>
+homepage: https://thosakwe.github.io/json2dart
+environment:
+  sdk: ">=1.19.0"
+dependencies:
+  args: ^0.13.7
+  build: ^0.7.0
+  code_builder: ^1.0.0-alpha
+  codemirror: ^0.4.1
+  console: ^2.2.4
+  inflection: ^0.4.1
+  recase: ^1.0.0
+dev_dependencies:
+  browser: ^0.10.0
+  dart_to_js_script_rewriter: ^1.0.0
+# transformers:
+#- dart_to_js_script_rewriter
+executables:
+  json2dart: json2dart

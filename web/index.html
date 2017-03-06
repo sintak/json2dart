@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css">
+    <title>json2dart</title>
+    <style>
+        #alertBox {
+            display: none;
+            transition: display fade-in 250ms;
+        }
+
+        #alertBox.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ui menu">
+        <div class="ui container">
+            <div class="header item">
+                json2dart
+            </div>
+            <div class="right menu">
+                <a href="https://github.com/thosakwe/json2dart" class="item">
+                    <i class="github icon"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="ui container">
+        <div class="ui message" id="alertBox"></div>
+    </div>
+    <script src="main.dart" type="application/dart"></script>
+    <script src="packages/browser/dart.js"></script>
+</body>
+
+</html>
