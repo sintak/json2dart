@@ -4,6 +4,11 @@ import 'package:args/args.dart';
 import 'package:json2dart/json2dart.dart';
 
 final ArgParser PARSER = new ArgParser(allowTrailingOptions: true)
+  ..addFlag('help',
+      abbr: 'h',
+      help: 'Shows this help information.',
+      defaultsTo: false,
+      negatable: false)
   ..addFlag('owl',
       help: 'Determines whether to add `package:owl_codegen` annotations.',
       defaultsTo: false,
@@ -14,6 +19,14 @@ final ArgParser PARSER = new ArgParser(allowTrailingOptions: true)
 
 main(List<String> args) async {
   var result = PARSER.parse(args);
+
+  if (result['help']) {
+    print('usage: json2dart [options...] <file>');
+    print('\nOptions:');
+    print(PARSER.usage);
+    exit(0);
+    return;
+  }
 
   if (result.rest.isEmpty) {
     stderr.writeln('fatal error: no input file');
