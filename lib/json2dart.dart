@@ -20,7 +20,6 @@ LibraryBuilder generateDartLibrary(Map map,
 ClassBuilder generateClass(Map map, LibraryBuilder lib,
     {String className, bool owl: false}) {
   var clazz = new ClassBuilder(className ?? 'RootObject');
-  List<String> fieldNames = [];
 
   if (owl == true) {
     clazz.addAnnotation(new TypeBuilder('JsonClass').newInstance([]));
@@ -38,27 +37,19 @@ ClassBuilder generateClass(Map map, LibraryBuilder lib,
         var camel = rc.camelCase;
 
         field = varField(camel, type: type);
-        fieldNames.add(camel);
 
         if (camel != key) {
           field.addAnnotation(new TypeBuilder('JsonKey')
               .newInstance([], named: {'key': literal(key)}));
         }
-      } else {
+      } else
         field = varField(key, type: type);
-        fieldNames.add(key);
-      }
 
       clazz.addField(field);
     }
   }
 
   var constructor = new ConstructorBuilder();
-
-  for (var name in fieldNames) {
-    constructor.addNamed(parameter(name), asField: true);
-  }
-
   clazz.addConstructor(constructor);
 
   return clazz;
@@ -67,14 +58,14 @@ ClassBuilder generateClass(Map map, LibraryBuilder lib,
 TypeBuilder resolveType(LibraryBuilder lib, String key, val, {bool owl}) {
   if (val == null)
     return new TypeBuilder('dynamic');
-  else if (val is bool)
-    return new TypeBuilder('bool');
   else if (val is String)
     return new TypeBuilder('String');
   else if (val is int)
     return new TypeBuilder('int');
   else if (val is num)
     return new TypeBuilder('num');
+  else if (val is bool)
+    return new TypeBuilder('bool');
   else if (val is List && val.isEmpty)
     return new TypeBuilder('List');
   else if (val is List) {

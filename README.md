@@ -1,11 +1,18 @@
 # json2dart
-Generate Dart classes from JSON. Also supports `package:owl_codegen`, and allows you to specify a custom class name.
-This package works well for implementing API clients, and will be used in `package:twit`.
+Generates Dart classes from JSON.
 
+# Installation
 ```bash
-$ pub global activate json2dart
-$ json2dart foo.json >> foo.dart
-$ json2dart foo.json --owl -c Foo >> foo.dart
+pub global activate json2dart
 ```
 
-*Coming soon: Web-based generator*
+# Usage
+From the command-line:
+
+```bash
+json2dart foo.json >> foo.dart
+json2dart --owl bar.json >> bar.dart # Generate `package:owl_codegen` metadata as well
+json2dart -c ArbitraryClassName baz.json >> arbitrary.dart
+```
+
+This package also supports a `package:build` builder in `package:json2dart/builder.dart`.
