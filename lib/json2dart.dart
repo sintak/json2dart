@@ -39,7 +39,7 @@ ClassBuilder generateClass(Map map, LibraryBuilder lib,
         field = varField(camel, type: type);
 
         if (camel != key) {
-          field.addAnnotation(new TypeBuilder('JsonKey')
+          field.addAnnotation(new TypeBuilder('JsonField')
               .newInstance([], named: {'key': literal(key)}));
         }
       } else

@@ -1,5 +1,5 @@
 name: json2dart
-version: 1.0.1
+version: 1.0.2
 description: Generate Dart classes from JSON.
 author: Tobe O <thosakwe@gmail.com>
 homepage: https://thosakwe.github.io/json2dart
